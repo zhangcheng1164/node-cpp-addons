@@ -1,0 +1,5 @@
+illustrate how to return values to js module from cpp addon , includes number, string, null, undefined ,boolean(basic type) and Array and Object
+1.compile the cpp addon
+  node-gyp configure build
+2.test
+  node test.js 

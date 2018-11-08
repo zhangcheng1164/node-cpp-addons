@@ -1,0 +1,17 @@
+illustrate how to 
+1. create a so lib
+    gcc -shared -fpic -lm -ldl -o libcat_c.so cat.c
+
+2. dynamic link the above so lib using c/c++
+    cp ./libcat_c.so /usr/lib/
+    ldconfig
+    g++ test.cpp -ldl -o test
+    ./test
+
+3. create a node.js c++ addon, in which dynamic link the so lib
+    node-gyp configure build
+    node test.js string1 string2
+
+issues:
+in test.cc, i use malloc to allocate the buffer, and it runs all right,
+buf in dlso.cc, using malloc will produce unreadable words, using calloc is OK. i dont know why.
